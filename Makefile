@@ -8,7 +8,7 @@ dist: fastqc.jar
 	mkdir -p dist/FastQC
 	cp -a fastqc dist/FastQC
 	chmod +x dist/FastQC/fastqc
-	cp -a fastqc.jar dist/FastQC
+	cp -a fastqc.jar sam-1.32.jar jbzip2-0.9.jar dist/FastQC
 	cp -ra Contaminants Help Templates dist/FastQC
 	cd dist; zip -r FastQC.zip FastQC; cd -
 
