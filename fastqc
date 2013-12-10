@@ -8,7 +8,7 @@ use Getopt::Long;
 # since several people have made this mistake
 
 if (-e "$RealBin/uk/ac/babraham/FastQC/FastQCApplication.java") {
-	die "This is the source distribution of FastQC.  You need to get the compiled version if you want to run the program\n";
+  die "This is the source distribution of FastQC.  You need to get the compiled version if you want to run the program\n";
 }
 
 my $delimiter = ':';
@@ -18,10 +18,10 @@ if ($^O =~ /Win/) {
 }
 
 if ($ENV{CLASSPATH}) {
-	$ENV{CLASSPATH} .= "$delimiter$RealBin$delimiter$RealBin/sam-1.32.jar$delimiter$RealBin/jbzip2-0.9.jar";
+	$ENV{CLASSPATH} .= "$delimiter$RealBin$delimiter$RealBin/sam-1.32.jar$delimiter$RealBin/jbzip2-0.9.jar$delimiter$RealBin/fastqc.jar";
 }
 else {
-	$ENV{CLASSPATH} = "$RealBin$delimiter$RealBin/sam-1.32.jar$delimiter$RealBin/jbzip2-0.9.jar";
+	$ENV{CLASSPATH} = "$RealBin$delimiter$RealBin/sam-1.32.jar$delimiter$RealBin/jbzip2-0.9.jar$delimiter$RealBin/fastqc.jar";
 }
 
 my @java_args;
@@ -39,8 +39,8 @@ my $contaminant;
 my $threads;
 my $quiet;
 my $nogroup;
-my $single_group;
 my $casava;
+my $single_group;
 my $kmer_size;
 my $java_bin = 'java';
 
@@ -54,7 +54,7 @@ my $result = GetOptions('version' => \$version,
 						'threads=i' => \$threads,
 						'kmers=i' => \$kmer_size,
 						'casava' => \$casava,
-						'single-group' => \$single_group,
+						'single-group=s' => \$single_group,
 						'contaminants=s' => \$contaminant,
 						'java=s' => \$java_bin,
 						 );
@@ -121,7 +121,7 @@ if ($casava) {
 }
 
 if ($single_group) {
-	push @java_args ,"-Dfastqc.single_group=true";		
+	push @java_args ,"-Dfastqc.single_group=$single_group";		
 	push @java_args ,"-Dfastqc.casava=true";		
 }
 

@@ -39,6 +39,7 @@ my $contaminant;
 my $threads;
 my $quiet;
 my $nogroup;
+my $single_group;
 my $casava;
 my $kmer_size;
 my $java_bin = 'java';
