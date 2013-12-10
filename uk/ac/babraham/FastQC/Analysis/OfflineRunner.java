@@ -153,10 +153,17 @@ public class OfflineRunner implements AnalysisListener {
 		
 		if (System.getProperty("fastqc.output_dir") != null) {
 			String fileName = file.getFile().getName().replaceAll(".gz$","").replaceAll(".bz2$","").replaceAll(".txt$","").replaceAll(".fastq$", "").replaceAll(".sam$", "").replaceAll(".bam$", "")+"_fastqc.zip";
-			reportFile = new File(System.getProperty("fastqc.output_dir")+"/"+fileName);						
+      if (System.getProperty("fastqc.single_group") != null) {
+        fileName = System.getProperty("fastqc.single_group") + "_fastqc.zip";
+      }
+      reportFile = new File(System.getProperty("fastqc.output_dir")+"/"+fileName);						
 		}
 		else {
-			reportFile = new File(file.getFile().getAbsolutePath().replaceAll(".gz$","").replaceAll(".bz2$","").replaceAll(".txt$","").replaceAll(".fastq$", "").replaceAll(".sam$", "").replaceAll(".bam$", "")+"_fastqc.zip");			
+			String fileName = file.getFile().getAbsolutePath().replaceAll(".gz$","").replaceAll(".bz2$","").replaceAll(".txt$","").replaceAll(".fastq$", "").replaceAll(".sam$", "").replaceAll(".bam$", "")+"_fastqc.zip";			
+      if (System.getProperty("fastqc.single_group") != null) {
+        fileName = System.getProperty("fastqc.single_group") + "_fastqc.zip";
+      }
+      reportFile = new File(fileName);
 		}
 		
 		try {
