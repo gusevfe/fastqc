@@ -10,5 +10,5 @@ dist: fastqc.jar
 	chmod +x dist/FastQC/fastqc
 	cp -a fastqc.jar dist/FastQC
 	cp -ra Contaminants Help Templates dist/FastQC
-	cd dist; zip FastQC.zip FastQC; cd -
+	cd dist; zip -r FastQC.zip FastQC; cd -
 

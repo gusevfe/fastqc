@@ -1,3 +1,6 @@
+This is a custom version of FastQC with option --single-profile=NAME,
+which generates just a single report for all files -- not for each one of them.
+
 FastQC - A Quality Control application for FastQ files
 ------------------------------------------------------
 
